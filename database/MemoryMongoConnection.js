@@ -1,6 +1,6 @@
 const { MongoMemoryServer } = require("mongodb-memory-server")
 
-const BaseMongoConnection = require("./_BaseMongoConnection")
+const BaseMongoConnection = require("./BaseMongoConnection")
 
 class MemoryMongoConnection extends BaseMongoConnection {
   constructor() {

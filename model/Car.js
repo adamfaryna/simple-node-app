@@ -9,6 +9,6 @@ const carsSchema = new Schema({
     type: String    
 })
 
-const Model = mongoose.model("Cars", carsSchema)
+const Model = mongoose.model("Car", carsSchema)
 
 module.exports = Model

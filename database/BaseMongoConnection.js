@@ -17,7 +17,8 @@ class BaseMongoConnection {
     this.initialization = null
     this.initialized = false
     this.connectOptions = {
-      autoIndex: false
+      autoIndex: false,
+      useNewUrlParser: true
     }
   }
   
