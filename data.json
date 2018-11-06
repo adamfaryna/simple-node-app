@@ -1,0 +1,21 @@
+[{
+  "name": "911",
+  "brand": "Porsche",
+  "type": "coupe"
+},
+ {
+   "name": "X1",
+   "brand": "BMW",
+   "type": "SUV"
+ },
+ {
+   "name": "i8",
+   "brand": "BMW",
+   "type": "roadster"
+ },
+ {
+   "name": "C-class",
+   "brand": "Mercedes-Benz",
+   "type": "Cabriolet"
+ }
+]
