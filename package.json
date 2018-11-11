@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Simple Node.js client/server discovery service",
   "scripts": {
-    "start": "npm run dev",
-    "prod": "pm2 start ./bin/www",
-    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "client:dev": "nodemon ./client/index.js",
+    "server:dev": "NODE_ENV=development nodemon ./index.js",
+    "client:prod": "node ./client/index.js",
+    "server:prod": "pm2 start ./index.js",
     "test": "mocha \"./test/**/*.test.js\""
   },
   "keywords": [

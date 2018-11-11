@@ -6,7 +6,9 @@ const {
   DB_URL
 } = require("../config")
 const { Car } = require("../model")
+const { isDev } = require("../utils")
 
+mongoose.set("debug", isDev())
 
 class BaseMongoConnection {
   constructor() {
@@ -21,7 +23,7 @@ class BaseMongoConnection {
       useNewUrlParser: true
     }
   }
-  
+
   init() {
     if (!this.initialized) {
       this.initialized = true
