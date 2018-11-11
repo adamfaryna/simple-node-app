@@ -1,4 +1,4 @@
-const mongoConnection = require("./MongoConnection")
+const mongoConnection = require("./mongoConnection")
 
 module.exports = {
   mongoConnection
