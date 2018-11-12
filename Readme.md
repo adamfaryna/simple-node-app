@@ -1,4 +1,4 @@
-# Simple Node.js app
+# Simple Server/Client with UTP discovery service
 
 Data is loaded to database by BaseMongoConnection.loadData(). This is abstract class, with has 2 implementations: MongoConnection and MemoryMongoConnection (in-memory implementation for test purposes).
 
@@ -35,41 +35,67 @@ npm test
 Using yarn
 
 ```
-yarn run dev
+yarn run server:dev
 ```
 
 or
 
 ```
-yarn start
+yarn run server:dev
 ```
 
 Using npm
 
-```npm run dev```
+```
+npm run server:dev
+```
 
 or
 
-```npm start```
+```
+npm run server:dev
+```
 
 ## To start production server [PM2](http://pm2.keymetrics.io)
 
 Using yarn
 
 ```
-yarn run prod
+yarn run server:prod
 ```
 
 using npm
 
 ```
-npm run prod
+npm run server:prod
 ```
 
-## To call API
+## To start development client
+
+Using yarn
 
 ```
-curl -G http://localhost:3000/api/net
+yarn run client:dev
+```
+
+using npm
+
+```
+npm run client:dev
+```
+
+## To start production client
+
+Using yarn
+
+```
+yarn run client:prod
+```
+
+using npm
+
+```
+npm run client:prod
 ```
 
 ## Enjoy!
