@@ -1,7 +1,7 @@
 const discoveryService = require("./discoveryService")
 const restService = require("./restService")
 
-module.exports {
+module.exports = {
   discoveryService,
   restService
 }

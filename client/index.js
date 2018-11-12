@@ -1,44 +1,24 @@
-const dgram = require("dgram")
+const client = require("./client")
 
-const {
-  MULTICAST_ADDR,
-  DISCOVERY_SERVER_PORT
-} = require("../config")
+process.on("SIGINT",  handleQuit)
+process.on("SIGTERM", handleQuit)
+process.on("SIGQUIT", handleQuit)
+process.on("SIGABRT", handleQuit)
+process.on("uncaughtException", handleUncaughtException)
 
-const message = new Buffer("ala ma kota")
-
-class Client {
-  constructor() {
-    this.started = false
-  }
-
-  start() {
-    if (this.started) {
-      throw new Error("Client already started!")
-    }
-
-    this.started = true
-    this.client = dgram.createSocket("udp4")
-
-    this.client.on("error", err => {
-      console.error(err)
-      this.close()
-      throw err
-    })
-
-    this.client.bind(MULTICAST_ADDR, DISCOVERY_SERVER_PORT, () => {
-      this.client.addMembership(MULTICAST_ADDR)
-    })
-  }
-
-  close() {
-    this.client.close()
-    console.log("Client stopped.")
-  }
+function cleanup() {
+  client.close()
 }
 
-const instance = new Client()
-
-module.exports = {
-  instance
+function handleUncaughtException(err) {
+  console.error("UncaughtException:", err)
+  cleanup()
+  process.exit(1)
 }
+
+function handleQuit(signal) {
+  cleanup()
+  process.exit(0)
+}
+
+client.start().callApi()

@@ -5,9 +5,11 @@ const bodyParser = require("body-parser")
 
 const { isDev } = require("../utils")
 const { apiRouter } = require("../routes")
-const SERVER_404_MESSAGE = require("../config")
-
-const data = require("../data.json")
+const {
+  SERVER_404_MESSAGE,
+  API_PATH
+} = require("../config")
+const { mongoConnection } = require("../database")
 
 class RestService {
   constructor() {
@@ -23,19 +25,19 @@ class RestService {
 
     this.app = express()
 
-    app.set('view engine', 'jade')
-    app.use(logger("dev"))
-    app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded({ extended: false }))
-    app.use("/api", apiRouter)
+    this.app.set('view engine', 'jade')
+    this.app.use(logger("dev"))
+    this.app.use(bodyParser.json())
+    this.app.use(bodyParser.urlencoded({ extended: false }))
+    this.app.use(API_PATH, apiRouter)
 
-    app.use(function(req, res, next) {
+    this.app.use(function(req, res, next) {
       const err = new Error("Not Found")
       err.status = 404
       next(err)
     })
 
-    app.use(function(err, req, res, next) {
+    this.app.use(function(err, req, res, next) {
       res.locals.message = err.message
       res.locals.error = isDev() ? err : {}
 
@@ -50,26 +52,8 @@ class RestService {
     let port = require("../config").SERVER_PORT
 
     port = normalizePort(port)
-    app.set('port', port);
+    this.app.set('port', port);
 
-    /**
-     * Normalize a port into a number, string, or false.
-     */
-    function normalizePort(val) {
-      var port = parseInt(val, 10);
-
-      if (isNaN(port)) {
-        // named pipe
-        return val;
-      }
-
-      if (port >= 0) {
-        // port number
-        return port;
-      }
-
-      return false;
-    }
 
     function onError(error) {
       if (error.syscall !== 'listen') {
@@ -102,7 +86,7 @@ class RestService {
       debug('Listening on ' + bind);
     }
 
-    const server = http.createServer(app)
+    const server = http.createServer(this.app)
 
     server.listen(port)
     server.on('error', onError)

@@ -61,7 +61,21 @@ class BaseMongoConnection {
           console.error(err)
           reject(err)
 
-        } else{
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  }
+
+  getData() {
+    return new Promise((resolve, reject) => {
+      Car.find({}, (err, res) => {
+        if (err) {
+          console.error(err)
+          reject(err)
+
+        } else {
           resolve(res)
         }
       })
