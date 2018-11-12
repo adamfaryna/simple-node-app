@@ -2,6 +2,8 @@ const express = require("express")
 const path = require("path")
 const logger = require("morgan")
 const bodyParser = require("body-parser")
+const debug = require('debug')('x:server')
+const http = require('http')
 
 const { isDev } = require("../utils")
 const { apiRouter } = require("../routes")
@@ -10,6 +12,7 @@ const {
   API_PATH
 } = require("../config")
 const { mongoConnection } = require("../database")
+const port = require("../config").SERVER_PORT
 
 class RestService {
   constructor() {
@@ -47,13 +50,8 @@ class RestService {
       res.send(SERVER_404_MESSAGE)
     })
 
-    var debug = require('debug')('x:server');
-    var http = require('http');
-    let port = require("../config").SERVER_PORT
 
-    port = normalizePort(port)
     this.app.set('port', port);
-
 
     function onError(error) {
       if (error.syscall !== 'listen') {

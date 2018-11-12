@@ -8,9 +8,8 @@ const router = express.Router()
 
 router.get(API_NET_PATH, (req, res) => {
   mongoConnection.getData().then(result => {
-    console.log("result:", result)
     res.json(result)
-  } )
+  })
 })
 
 module.exports = router
