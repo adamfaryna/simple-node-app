@@ -16,6 +16,8 @@ using npm
 npm install
 ```
 
+-------------------------------------------------------------------------------
+
 ## To run tests
 
 Using yarn
@@ -29,6 +31,8 @@ using npm
 ```
 npm test
 ```
+
+-------------------------------------------------------------------------------
 
 ## To start development server
 
@@ -56,6 +60,8 @@ or
 npm run server:dev
 ```
 
+-------------------------------------------------------------------------------
+
 ## To start production server [PM2](http://pm2.keymetrics.io)
 
 Using yarn
@@ -69,6 +75,8 @@ using npm
 ```
 npm run server:prod
 ```
+
+-------------------------------------------------------------------------------
 
 ## To start development client
 
@@ -84,6 +92,8 @@ using npm
 npm run client:dev
 ```
 
+-------------------------------------------------------------------------------
+
 ## To start production client
 
 Using yarn
@@ -97,5 +107,7 @@ using npm
 ```
 npm run client:prod
 ```
+
+-------------------------------------------------------------------------------
 
 ## Enjoy!
