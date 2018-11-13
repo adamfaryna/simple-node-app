@@ -2,6 +2,13 @@
 
 Data is loaded to database by BaseMongoConnection.loadData(). This is abstract class, with has 2 implementations: MongoConnection and MemoryMongoConnection (in-memory implementation for test purposes).
 
+## Requirements
+
+Node.js 6.14.4+
+Mongodb 3+
+
+-------------------------------------------------------------------------------
+
 ## To build
 
 Using yarn
